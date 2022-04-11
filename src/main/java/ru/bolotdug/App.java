@@ -16,7 +16,7 @@ public class App {
   public static void main(String[] args) throws IOException {
     String fileName = parseFileName(args);
 
-    BitSetUniqueIpCounter counter = new BitSetUniqueIpCounter();
+    UniqueIpCounter counter = new UniqueIpCounter();
     long numberOfUniqueIp = counter.countUniqueIp(fileName);
     System.out.println("Found " + numberOfUniqueIp + " unique IP's");
   }

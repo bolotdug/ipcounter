@@ -4,14 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.BitSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class BitSetUniqueIpCounter {
+public class UniqueIpCounter {
 
   long NUMBER_OF_IP_ADDRESSES = 256L * 256 * 256 * 256;
-  private final Logger logger = Logger.getLogger("BitSetUniqueIpCounter");
+  private final Logger logger = Logger.getLogger("UniqueIpCounter");
   int[] seen = new int[1 << 27];
   private long counter = 0;
 
@@ -28,11 +27,8 @@ public class BitSetUniqueIpCounter {
     logger.log(Level.INFO, "Reading file: " + fileName);
     try (BufferedReader in = new BufferedReader(new FileReader(fileName))) {
       long readLines = 0;
-      String line;
 
-      /**
-       * If already counted 2 ^ 32 unique addresses, then to the end of the file there will be only duplicates
-       */
+      String line;
       while ((line = in.readLine()) != null && counter <= NUMBER_OF_IP_ADDRESSES) {
         registerIpAddress(toLongValue(line));
         readLines++;
